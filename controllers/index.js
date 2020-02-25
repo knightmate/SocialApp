@@ -1,7 +1,8 @@
 function home (req,res)
 {
 
-    res.end("express is up for the social");
+     return res.render('home');
+
 
 }
  
