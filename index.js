@@ -1,11 +1,12 @@
 const express=require('express');
 const app=express();
-const port=8000;
+const port=800;
  
 var path = require('path');
 
 
 app.use('/',require('./routes'));
+
  app.set('view engine','ejs');
  app.set('views','views');
  

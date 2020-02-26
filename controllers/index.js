@@ -1,7 +1,17 @@
 function home (req,res)
 {
 
-     return res.render('home');
+    const m= require('../models/index');
+
+     m(function(title)
+     {
+          res.render('home',{
+               title:title
+         });
+
+
+     });
+      
 
 
 }
