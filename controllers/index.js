@@ -1,17 +1,23 @@
 function home (req,res)
 {
 
-    const m= require('../models/index');
-
-     m(function(title)
-     {
-          res.render('home',{
-               title:title
-         });
+           return  res.render('home',{
+                         title:"App"
+                   });
 
 
-     });
-      
+//     const m= require('../models/index');
+
+//      m(function(title)
+//      {
+          
+//           res.render('home',{
+//                title:title
+//          });
+
+
+//      });
+ 
 
 
 }

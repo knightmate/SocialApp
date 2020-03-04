@@ -7,9 +7,9 @@ const homeController=require("../controllers/index");
 //module.exports = router ;
  console.log("router loaded");
  
- router.get('/',homeController);
+ router.use('/',homeController);
 
-  router.get('/user',require('./users'));
+  //router.get('/user',require('./users'));
 
   
  
