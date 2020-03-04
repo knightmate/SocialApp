@@ -1,13 +1,34 @@
 
-module.exports=profile=function(req,res)
+const User=require('../models/user');
+
+
+
+module.exports=function(req, res)
 {
 
-    console.log("We are on the server of the controller");
-    console.log(req.cookies);
-    res.cookie('userid', 25);
-    return  res.end("We are sending the profile page");
-     
+    res.send("This is the home page for the social app");
 
+}
+module.exports.profile=function(req,res)
+{
+
+
+    console.log(req.cookies.userid);
+      var email1;
+    User.findById(id=req.cookies.userid, function(err, user){
+
+     email1= user.email;
+     return res.render('profile', {
+
+        title:"Profile Page",
+          email:email1
+
+     });
+        
+ 
+    });
+    console.log("email"+email1);
+      
    
 
 }
@@ -46,7 +67,57 @@ module.exports.singin=function(req, res)
 module.exports.create=function(req, res)
 {
 
-    //to later
+   var p= req.body.password;
+   var p2= req.body.conformpassword; 
+   console.log(p+"--"+p2);
+   if(p!=p2)
+   {
+       return res.redirect('back');
+   }
+
+
+   
+   User.findOne({email:req.body.email} , function(err, user)
+   {
+
+    if(err)
+    {
+        console.log(err);
+        return;
+
+    }
+   
+    console.log(!user);
+    if(!user){
+
+        User.create( req.body, function(err , user){
+
+            if(err)
+            {
+                console.log("cannot create user");
+                return;
+            }
+
+            console.log(user+" Created");
+            res.redirect('singn_in');
+
+        });
+
+    }
+
+    else
+    {
+         res.redirect('singn_in');
+        
+    }
+
+
+
+
+   })
+
+  // res.redirect('back');
+      
 
 };
 
@@ -55,6 +126,54 @@ module.exports.create=function(req, res)
 module.exports.createsesssion=function(req, res)
 {
 
-    //to later
+ //find user
+
+ console.log(req.body); 
+ User.findOne({email:req.body.email} , function(err, user)
+ {
+
+    if(err)
+    {
+        console.log("getting erro"+err);
+        return;
+
+    }
+
+    console.log(user);
+    if(user)
+    {
+// handle pass
+if(user.password!=req.body.password)
+{
+    return res.redirect('back');
+}
+
+
+     res.cookie('userid', user.id);
+     res.redirect('profile');
+
+    }else{
+
+       console.log('user not the in database');
+      res.redirect('back');
+
+    }
+
+
+ });
+
+
+ //user found
+
+ //user password dont match
+
+
+
+ //handle session creation
+
+ //user not found
+
+
+
 
 };

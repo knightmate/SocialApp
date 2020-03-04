@@ -13,14 +13,14 @@ const userScheme=new mongoose.Schema({
     
     password:{
 
-        type:password,
+        type:String,
         required:true,
         
-    },       
-     timestamps:true
-});
+    },
+     
+}, {timestamps: true} );
 
 
-const User=mongoose.model('user', userScheme);
+const User=mongoose.model('User', userScheme);
 
-module.exports.User;
+module.exports=User;

@@ -14,6 +14,7 @@ var path = require('path');
  app.set('view engine','ejs');
  app.set('views','views');
  app.use(express.json({limit:'1mb'}));
+ const db=require('./config/mongoose');
  
  app.use(express.urlencoded());
  //tell app to use cookies and read it when any request comein
