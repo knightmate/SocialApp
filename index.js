@@ -5,12 +5,25 @@ const port=800;
 var path = require('path');
 
 
-app.use('/',require('./routes'));
+ //app.get('/',require('./routes'));
 
  app.set('view engine','ejs');
  app.set('views','views');
+ app.use(express.json({limit:'1mb'}));
+ 
  
 
+ app.get('/',function(req,res)
+ {
+
+    console.log("req reved");
+  console.log(req);
+
+  res.render('home',{
+    title:"title"
+   });
+
+ });
  
 
 app.listen(port, function(err)
