@@ -13,7 +13,7 @@
 
 
 
-     <form action="signout"  method="get">
+     <form action="signout"  method="get" >
        
         <input type="submit" value="SignOut" placeholder="SignOut" name="signout">
 
@@ -22,7 +22,7 @@
 
      <section id='feedpost'>
       <h4>Post</h4>
-   <form action="/post" id="newpostform" method='post'>
+   <form action="/post" id="newpostform" method='post'   style="margin-left: 10px">
 
  <textarea name="content"  cols="30" rows="3"></textarea>
    <input type="submit" value='post'>
@@ -37,15 +37,48 @@
 
        <%for(post of posts){ %>
 
-        <li style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%> </li>
+        <li style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%>  
 
-        <a href="/del" + <%=post.id%> >   </a>
+        <a href="/del" + <%= post.id%> >   </a>
               <button id="del" style="font-size: larger; color: red;" >*</button>
         </a>
+
+        <div id="comment">
+           <form action="comment" method="post" style="margin-left: 10px;">
+            <input type="text" name='content' placeholder="AddComment">
+            <input type="hidden" name='post' value="<%=post._id %>"  >
+            <input type="submit" value="Add Comment">
+           </form>
+        </div>
+
+      
+      </li>
+
+
+      <ul>
+              
+        
+         <%for(comment of post.comments){%>
+
+     <li> <div style="font-size: x-large; margin-top: 10px;"><%=comment.content%> <br><small>.....<%=post.user.email%></small></li>
+           
+           
+         <%}%>
+     </ul>
+
+
+
+
+
+
+
        <%}%>
 
         
        </ul>
+
+        
+
 
 </div>
 

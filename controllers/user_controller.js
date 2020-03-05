@@ -29,21 +29,75 @@ module.exports.profile=function(req,res)
 
    // console.log(req.cookies.userid);
       var email1;
-    User.findById(id=req.cookies.userid, function(err, user){
+    User.findById(id=req.cookies.userid, function(err, u){
 
-     email1= user.email;
+    email1= u.email;
    
 
-     Post.find({}).populate('user').exec(function(err, posts){
+     Post.find({user:req.cookies.userid })
+     .populate('user')
+     .populate({
+      path:"comments"
+     })
+      .populate({
+          path:'user'
+      }). 
+     exec(function(err, posts){
+
+        //  posts.populate('comments').exec(function(err, com){
+
+        //     if(err)
+        //     console.log(err);
+            
+        //   console.log(com);
 
 
+
+        //  });
+
+          // console.log("commnet"+posts.comments);
+         
+ 
+            
         if(err)
         {
             console.log("error in creating post"+err);
             return;
 
         }
-        console.log(posts);     
+       // console.log(posts);  
+     //  console.log("commnet"+posts); 
+         
+     
+ 
+
+       cm=posts;
+
+       console.log(posts[0].comments[0].content);
+
+       
+
+    //    for(var i=0;i<posts[0].comments.length;i++)
+    //    {
+    //        console.log(posts[0].comments[i]);
+    //    }
+        
+       var cm=posts[0];
+      // console.log(cm);
+       console.log(cm.user)
+    //    for(c of cm.comments)
+    //    {
+      
+    //     console.log("com"+c);
+
+
+    //    }
+
+    // console.log("user--"+posts);
+       
+
+  
+
         return res.render('profile', {
 
              title:"Profile Page",

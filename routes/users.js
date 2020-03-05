@@ -29,7 +29,9 @@ router.get('/signout', function(req,res)
 })
 
 const temp=require('./post');
+const tempcomment=require('./comment');
 
 router.post('/post', temp );
+router.post('/comment',tempcomment);
 
 module.exports=router;
