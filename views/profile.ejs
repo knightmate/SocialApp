@@ -39,9 +39,9 @@
 
         <li style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%>  
 
-        <a href="/del" + <%= post.id%> >   </a>
+          <a href="/del/?id=<%=post._id%>"    >  
               <button id="del" style="font-size: larger; color: red;" >*</button>
-        </a>
+          </a>
 
         <div id="comment">
            <form action="comment" method="post" style="margin-left: 10px;">

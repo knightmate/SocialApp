@@ -6,7 +6,8 @@ const router=express.Router();
 
 const postcontroller=require('../controllers/commentscontroller');
  
-router.post('/comment', postcontroller.comment );
+  router.post('/comment', postcontroller.comment);
+ router.get('/del', postcontroller.delcomment);
 
 
 

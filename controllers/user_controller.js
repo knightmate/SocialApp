@@ -73,7 +73,7 @@ module.exports.profile=function(req,res)
 
        cm=posts;
 
-       console.log(posts[0].comments[0].content);
+      // console.log(posts[0].comments[0].content);
 
        
 
@@ -82,9 +82,9 @@ module.exports.profile=function(req,res)
     //        console.log(posts[0].comments[i]);
     //    }
         
-       var cm=posts[0];
+      // var cm=posts[0];
       // console.log(cm);
-       console.log(cm.user)
+     //  console.log(cm.user)
     //    for(c of cm.comments)
     //    {
       

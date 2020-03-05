@@ -34,4 +34,7 @@ const tempcomment=require('./comment');
 router.post('/post', temp );
 router.post('/comment',tempcomment);
 
+router.get('/del', tempcomment);
+ 
+
 module.exports=router;
