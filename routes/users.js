@@ -13,9 +13,9 @@ console.log("Server is commming on the user router");
 
 router.get('/',userController);
 //router.get('/user',userController);
-router.get('/singn_in',userController.singin);       
+router.get('/sign_in',userController.singin);       
 
-router.get('/sing_up',userController.singup );
+router.get('/sign_up',userController.singup );
 
 router.post('/create', userController.create);
  
@@ -25,8 +25,11 @@ router.get('/profile', userController.profile);
 
 router.get('/signout', function(req,res)
 {
-    res.redirect('singn_in');
+    res.redirect('sign_in');
 })
 
+const temp=require('./post');
+
+router.post('/post', temp );
 
 module.exports=router;

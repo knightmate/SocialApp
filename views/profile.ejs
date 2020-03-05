@@ -15,9 +15,39 @@
 
      <form action="signout"  method="get">
        
-        <input type="submit" placeholder="SignOut" name="signout">
+        <input type="submit" value="SignOut" placeholder="SignOut" name="signout">
 
      </form>
+
+
+     <section id='feedpost'>
+      <h4>Post</h4>
+   <form action="/post" id="newpostform" method='post'>
+
+ <textarea name="content"  cols="30" rows="3"></textarea>
+   <input type="submit" value='post'>
+
+   </form>
+  </section>
+
+   
+  <div id="post-list-container">
+
+   <ul>
+
+       <%for(post of posts){ %>
+
+        <li style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%> </li>
+
+        <a href="/del" + <%=post.id%> >   </a>
+              <button id="del" style="font-size: larger; color: red;" >*</button>
+        </a>
+       <%}%>
+
+        
+       </ul>
+
+</div>
 
 
 </body>   

@@ -6,25 +6,56 @@ const User=require('../models/user');
 module.exports=function(req, res)
 {
 
-    res.send("This is the home page for the social app");
+    const Post=require('../models/post');
 
+    Post.find({}, function(err, posts)
+    {
+        return res.render('home', {
+
+            title:"Homapge",
+            posts:posts,
+           
+    
+         });
+    
+ 
+
+    });
+     
 }
 module.exports.profile=function(req,res)
 {
-
+    const Post=require('../models/post');
 
    // console.log(req.cookies.userid);
       var email1;
     User.findById(id=req.cookies.userid, function(err, user){
 
      email1= user.email;
-     return res.render('profile', {
+   
 
-        title:"Profile Page",
-          email:email1
+     Post.find({}).populate('user').exec(function(err, posts){
+
+
+        if(err)
+        {
+            console.log("error in creating post"+err);
+            return;
+
+        }
+        console.log(posts);     
+        return res.render('profile', {
+
+             title:"Profile Page",
+             email:email1,
+             posts:posts,
+   
+        });
+
+
 
      });
-        
+     
  
     });
    // console.log("email"+email1);
@@ -177,3 +208,5 @@ if(user.password!=req.body.password)
 
 
 };
+
+

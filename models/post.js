@@ -10,17 +10,19 @@ const postScheme=new mongoose.Schema({
       
     
     },
+
     
     user:{
 
-        type:mongoose.Schema.Types.ObjectId;
+        type:mongoose.Schema.Types.ObjectId,
         required:true,
+        ref: 'User'
         
     },
      
 }, {timestamps: true} );
 
 
-const Post =mongoose.model('Post', userScheme);
+const Post =mongoose.model('Post', postScheme);
 
 module.exports=Post;
