@@ -13,7 +13,7 @@ module.exports.profile=function(req,res)
 {
 
 
-    console.log(req.cookies.userid);
+   // console.log(req.cookies.userid);
       var email1;
     User.findById(id=req.cookies.userid, function(err, user){
 
@@ -27,7 +27,7 @@ module.exports.profile=function(req,res)
         
  
     });
-    console.log("email"+email1);
+   // console.log("email"+email1);
       
    
 
@@ -69,7 +69,7 @@ module.exports.create=function(req, res)
 
    var p= req.body.password;
    var p2= req.body.conformpassword; 
-   console.log(p+"--"+p2);
+  // console.log(p+"--"+p2);
    if(p!=p2)
    {
        return res.redirect('back');
@@ -98,7 +98,7 @@ module.exports.create=function(req, res)
                 return;
             }
 
-            console.log(user+" Created");
+          //  console.log(user+" Created");
             res.redirect('singn_in');
 
         });
@@ -128,7 +128,7 @@ module.exports.createsesssion=function(req, res)
 
  //find user
 
- console.log(req.body); 
+ //console.log(req.body); 
  User.findOne({email:req.body.email} , function(err, user)
  {
 
@@ -139,7 +139,7 @@ module.exports.createsesssion=function(req, res)
 
     }
 
-    console.log(user);
+  //  console.log(user);
     if(user)
     {
 // handle pass
