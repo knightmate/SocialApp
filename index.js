@@ -35,6 +35,7 @@ var path = require('path');
  const db=require('./config/mongoose');
  
  app.use(express.urlencoded());
+ app.use(express.json());
  //tell app to use cookies and read it when any request comein
  app.use(cookieparser());
 

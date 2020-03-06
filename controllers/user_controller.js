@@ -3,10 +3,13 @@ const User=require('../models/user');
 
 
 
+
 module.exports=function(req, res)
 {
 
     const Post=require('../models/post');
+
+   
 
     Post.find({}, function(err, posts)
     {
@@ -25,18 +28,26 @@ module.exports=function(req, res)
 }
 module.exports.profile=function(req,res)
 {
+
+
+    
+
+
     const Post=require('../models/post');
 
    // console.log(req.cookies.userid);
       var email1;
     User.findById(id=req.cookies.userid, function(err, u){
-
+        console.log(u);
     email1= u.email;
+
+
+ 
    
 
      Post.find({user:req.cookies.userid })
      .populate('user')
-     .populate({
+     .populate({ 
       path:"comments"
      })
       .populate({
@@ -75,7 +86,7 @@ module.exports.profile=function(req,res)
 
       // console.log(posts[0].comments[0].content);
 
-       
+        
 
     //    for(var i=0;i<posts[0].comments.length;i++)
     //    {
@@ -152,6 +163,7 @@ module.exports.singin=function(req, res)
 module.exports.create=function(req, res)
 {
 
+    
    var p= req.body.password;
    var p2= req.body.conformpassword; 
   // console.log(p+"--"+p2);

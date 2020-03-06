@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="./css/all.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>
        <%=title%>
     </title>
@@ -22,10 +23,12 @@
 
      <section id='feedpost'>
       <h4>Post</h4>
-   <form action="/post" id="newpostform" method='post'   style="margin-left: 10px">
 
- <textarea name="content"  cols="30" rows="3"></textarea>
-   <input type="submit" value='post'>
+   <form   action="/post" id="newpostform" method='post' enctype="text/plain"   style="margin-left: 10px">
+
+    <textarea name="content"  cols="30" rows="3"></textarea>
+ 
+   <input type="submit" value='post' id="submitpost">
 
    </form>
   </section>
@@ -37,7 +40,7 @@
 
        <%for(post of posts){ %>
 
-        <li style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%>  
+        <li id='post-<%=post.id%>'      style="margin-top: 20px;"><%=post.content%> <br> by=<%=post.user.email%>  
 
           <a href="/del/?id=<%=post._id%>"    >  
               <button id="del" style="font-size: larger; color: red;" >*</button>
@@ -51,7 +54,7 @@
            </form>
         </div>
 
-      
+       
       </li>
 
 
@@ -82,6 +85,9 @@
 
 </div>
 
+ 
+<script type="text/javascript" src="/javascript/profile.js"></script>
+ 
 
 </body>   
 <html>
