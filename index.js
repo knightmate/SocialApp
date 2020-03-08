@@ -6,6 +6,8 @@ const cookieparser=require('cookie-parser');
 
 const router=require('./routes/users');
 const sassmiddleware=require('node-sass-middleware');
+const passportjwt=require('./config/passport-jwt');
+ 
 
  
 app.use(sassmiddleware({
@@ -21,7 +23,7 @@ app.use(sassmiddleware({
  
 var path = require('path');
 
-
+router.use('/api', require('./routes/api/index'));
 
  //app.get('/',require('./routes'));
 

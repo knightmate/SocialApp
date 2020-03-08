@@ -3,6 +3,7 @@ const Post=require('../models/post');
 
 module.exports.delcomment=function(req,res)
 {
+    
     console.log(req.query);
 
     Post.findByIdAndDelete(req.query.id, function(err,post){
@@ -53,8 +54,9 @@ module.exports.delcomment=function(req,res)
             console.log(post);
             post.comments.push(cmnt);
           
-            post.save();
-            res.redirect('/profile');
+             post.save();
+            console.log("comment data is saved");
+         res.redirect('/profile');
 
             }
           }) 

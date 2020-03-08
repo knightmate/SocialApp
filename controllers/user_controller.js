@@ -25,18 +25,29 @@ module.exports=function(req, res)
 }
 module.exports.profile=function(req,res)
 {
+
+    console.log("into profile");
+
+
+
+    if(!req.cookies.userid)
+    {
+       // console.log("user not found, not cookies from browser"+req.cookies)
+        return res.send("not user, please login first");
+    }
     const Post=require('../models/post');
 
    // console.log(req.cookies.userid);
       var email1;
     User.findById(id=req.cookies.userid, function(err, u){
 
+        console.log(u);
     email1= u.email;
    
 
      Post.find({user:req.cookies.userid })
      .populate('user')
-     .populate({
+     .populate({ 
       path:"comments"
      })
       .populate({
